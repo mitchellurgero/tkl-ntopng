@@ -1,4 +1,37 @@
 #include <turnkey/base>
 build-essential
+redis-server
+libglib2.0
+libglib2.0-dev
+libtool
+libgeoip-dev
+libgeoip1
+libpcap-dev
+libpcap0.8
+libxml2-dev
+libsqlite3-dev
+libcurl3
+libcurl4-gnutls-dev
+libmysqlclient18
+libmysqlclient-dev
+git
+bison
+flex
+libpcap-dev
+libtool-bin
+rrdtool
+librrd-dev
+autoconf
+automake
+libzmq3-dev
+libpng12-dev
+debhelper
+dpkg-sig
+dkms
+libhiredis0.10
+librdkafka1
+bridge-utils
+libnuma1
+libnetfilter-queue1
 ufw
 
