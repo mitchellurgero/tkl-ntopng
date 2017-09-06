@@ -1,5 +1,5 @@
 #!/bin/bash
-cd /var/temp/nDPI
+cd /var/temp/ntopng
 echo -e "Checking for updates for ntopng.."
 git remote update
 UPSTREAM=${1:-'@{u}'}
