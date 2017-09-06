@@ -1,1 +1,4 @@
 #include <turnkey/base>
+build-essential
+ufw
+

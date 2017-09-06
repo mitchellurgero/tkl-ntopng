@@ -1,2 +1,34 @@
 #!/bin/sh -ex
-echo "do nothing - core requires no post-package configuration commands"
+
+#wget http://apt-stable.ntop.org/jessie/all/apt-ntop-stable.deb
+#dpkg -i apt-ntop-stable.deb
+#apt-get clean all
+#apt-get update
+#apt-get install pfring nprobe ntopng ntopng-data n2disk cento nbox
+mkdir /var/temp
+cd /var/temp
+git clone https://github.com/ntop/PF_RING.git
+cd PF_RING/kernel
+make
+insmod ./pf_ring.ko
+cd ../userland
+make
+cd /var/temp
+git clone https://github.com/ntop/ntopng.git
+cd ntopng
+./autogen.sh
+./configure
+make
+make install
+cd /var/temp
+git clone https://github.com/ntop/nDPI.git
+cd nDPI
+./configure –with-pic
+make
+
+
+#### UFW RULES
+ufw disable && ufw --force enable
+ufw allow 22
+ufw allow 3000
+

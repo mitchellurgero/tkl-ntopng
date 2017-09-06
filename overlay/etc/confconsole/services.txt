@@ -1,3 +1,10 @@
-Web shell:  https://$ipaddr:12320
+ntopng - High Perfornmance
+Traffic Monitoring
+
+ntop-ng     http://$ipaddr:3000
+Web ssh:    https://$ipaddr:12320
+            (Blocked by default)
 Webmin:     https://$ipaddr:12321
-SSH/SFTP:   root@$ipaddr (port 22)
+            (Blocked by default)
+SSH/SFTP:   $ipaddr:22
+Default ntop account: admin/admin
