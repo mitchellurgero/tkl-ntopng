@@ -1,0 +1,15 @@
+[Unit]
+Description=ntopng server
+Wants=redis-server.service
+After=network.target redis.target syslog.target
+
+[Service]
+Type=simple
+PIDFile=/var/temp/ntop.pid
+ExecStart=/usr/local/bin/ntopng
+ExecStop=/bin/kill -HUP $MAINPID
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target

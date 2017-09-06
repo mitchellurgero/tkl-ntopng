@@ -5,19 +5,40 @@ VERD="3.1.170905_all";
 VERP="6.7.0-1397_amd64";
 VERK="6.7.0_all";
 CUR=$PWD;
-apt-get install libhiredis0.10 librdkafka1 bridge-utils libnuma1 libnetfilter-queue1
 
 mkdir /var/temp
 cd /var/temp
-wget http://packages.ntop.org/debian/jessie/x64/ntopng/ntopng_$VER.deb
-wget http://packages.ntop.org/debian/jessie/all/ntopng-data/ntopng-data_$VERD.deb
-wget http://packages.ntop.org/debian/jessie/x64/PF_RING/pfring_$VERP.deb
-wget http://packages.ntop.org/debian/jessie/all/PF_RING-dkms/pfring-dkms_$VERK.deb
-dpkg -i pfring-dkms_$VERK.deb
-dpkg -i pfring_$VERP.deb
-dpkg -i ntopng_$VER.deb
-dpkg -i ntopng-data_$VERD.deb
+#wget http://packages.ntop.org/debian/jessie/x64/ntopng/ntopng_$VER.deb
+#wget http://packages.ntop.org/debian/jessie/all/ntopng-data/ntopng-data_$VERD.deb
+#wget http://packages.ntop.org/debian/jessie/x64/PF_RING/pfring_$VERP.deb
+#wget http://packages.ntop.org/debian/jessie/all/PF_RING-dkms/pfring-dkms_$VERK.deb
+#dpkg -i pfring-dkms_$VERK.deb
+#dpkg -i pfring_$VERP.deb
+#dpkg -i ntopng_$VER.deb
+#dpkg -i ntopng-data_$VERD.deb
+
+### Download and build ntopng community
+git clone https://github.com/ntop/nDPI.git
+cd nDPI
+./autogen.sh
+./configure
+make
+#make install
+cd /var/temp
+git clone https://github.com/ntop/ntopng.git
+cd ntopng
+./autogen.sh
+./configure
+make
+make geoip
+make install
+
 cd $CUR
+
+## Since we haven't errored out yet (since build would stop on error. Now enable new service...
+## This will start ntop on boot
+systemctl enable ntop.service
+
 
 #### UFW RULES
 ufw disable && ufw --force enable

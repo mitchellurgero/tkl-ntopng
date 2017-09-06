@@ -30,6 +30,7 @@ dpkg-sig
 dkms
 libhiredis0.10
 librdkafka1
+binutils-dev
 bridge-utils
 libnuma1
 libnetfilter-queue1
