@@ -128,3 +128,9 @@ Credentials *(passwords set at first boot)*
 .. _confconsole: https://github.com/turnkeylinux/confconsole
 .. _inithooks: https://github.com/turnkeylinux/inithooks
 .. _shell hooks: https://www.turnkeylinux.org/blog/generic-shell-hooks
+
+
+-------
+
+This appliance was built using [TurnKey Linux](http://turnkeylinux.org) with their [TKLDev Appliance](https://www.turnkeylinux.org/tkldev) as well as their [TKLCore Appliance](https://www.turnkeylinux.org/core).
+
